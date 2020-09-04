@@ -73,6 +73,6 @@ export default {
 <style lang="scss" scoped>
 article {
   max-width: 32rem;
-  padding: 1rem 0 2rem;
+  padding: 1rem;
 }
 </style>

@@ -32,8 +32,11 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding-bottom: 2rem;
+  padding: 1rem 0.5rem;
+
+  @media only screen and (min-width: 32.5rem) {
+    text-align: center;
+  }
 }
 
 .borderCircle {
@@ -47,10 +50,16 @@ export default {
 
 .headingMd {
   max-width: 32rem;
-  font-size: 1.2rem;
-  line-height: 1.5;
+  text-align: center;
+  padding: 0 0.25rem;
+
+  @media only screen and (min-width: 32.5rem) {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+
   p {
-    padding-bottom: 0.75rem;
+    padding-bottom: 1rem;
   }
 }
 </style>
