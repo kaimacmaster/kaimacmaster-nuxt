@@ -24,6 +24,7 @@
 export default {
   data: () => ({
     name: 'Kai Macmaster',
+    transition: 'page',
   }),
 }
 </script>

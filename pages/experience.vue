@@ -14,6 +14,7 @@ const ExperienceItem = () => import('~/components/ExperienceItem')
 
 export default {
   name: 'experience',
+  transition: 'page',
   components: { ExperienceItem },
   async asyncData(context) {
     let experienceItems = []
