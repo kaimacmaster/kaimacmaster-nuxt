@@ -1,5 +1,5 @@
 <template>
-  <div id="layout">
+  <div id="layout" :class="{ dark }">
     <header id="header">
       <NavBar />
     </header>
@@ -14,14 +14,15 @@
 import NavBar from '~/components/NavBar'
 
 export default {
-  components: { NavBar }
+  components: { NavBar },
+  data: () => ({ dark: true }),
 }
 </script>
 
 <style lang="scss">
 html {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -42,7 +43,7 @@ body {
 }
 
 a {
-  color: #0070f3;
+  color: #2889fc;
   text-decoration: none;
 
   &:hover {
@@ -56,13 +57,18 @@ img {
 }
 
 #layout {
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
 
   #main {
     display: grid;
     place-items: center;
+  }
+
+  &.dark {
+    background-color: #2c2d30;
+    color: #f7feff;
   }
 }
 </style>

@@ -77,7 +77,7 @@ export default {
 <style lang="scss" scoped>
 article {
   max-width: 36rem;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   text-align: left;
 
   .article-header {

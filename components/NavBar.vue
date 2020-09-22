@@ -1,7 +1,11 @@
 <template>
   <nav id="navbar">
     <ul id="navbar__list">
-      <li id="navbar__list-item" v-for="link in links" :key="link.name.toLowerCase()">
+      <li
+        id="navbar__list-item"
+        v-for="link in links"
+        :key="link.name.toLowerCase()"
+      >
         <NuxtLink :to="link.to" v-text="link.name" />
       </li>
     </ul>
@@ -14,18 +18,18 @@ export default {
   props: {
     links: {
       type: Array,
-      default: () => ([
+      default: () => [
         {
           name: 'Home',
-          to: '/'
+          to: '/',
         },
         {
           name: 'Experience',
-          to: '/experience'
-        }
-      ])
-    }
-  }
+          to: '/experience',
+        },
+      ],
+    },
+  },
 }
 </script>
 
@@ -51,7 +55,7 @@ export default {
       margin: 0 0.75rem;
 
       &:hover {
-        color: #0070f3;
+        color: #2889fc;
         text-decoration: underline;
       }
     }
