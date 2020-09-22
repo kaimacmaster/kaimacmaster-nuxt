@@ -19,11 +19,9 @@ export default {
   components: true,
   buildModules: [],
   modules: [
-    [
-      '@nuxtjs/apollo',
-      'nuxt-canonical',
-      { baseUrl: 'https://kaimacmaster.co.uk' },
-    ],
+    '@nuxtjs/apollo',
+    'nuxt-canonical',
+    { baseUrl: 'https://kaimacmaster.co.uk' },
   ],
   apollo: {
     clientConfigs: {
