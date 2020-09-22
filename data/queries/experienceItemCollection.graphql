@@ -1,0 +1,11 @@
+{
+  experienceItemCollection(order: [startDate_DESC]) {
+    items {
+      companyName
+      jobTitle
+      startDate
+      leaveDate
+      description
+    }
+  }
+}
