@@ -17,20 +17,11 @@ export default {
   transition: 'page',
   components: { ExperienceItem },
   async asyncData(context) {
-    let experienceItems = []
     const { data } = await context.app.apolloProvider.defaultClient.query({
       query: experienceItemCollection,
     })
 
-    if (
-      data &&
-      data.experienceItemCollection &&
-      data.experienceItemCollection.items
-    ) {
-      experienceItems = data.experienceItemCollection.items
-    }
-
-    return { experienceItems }
+    return { experienceItems: data?.experienceItemCollection?.items || [] }
   },
 }
 </script>

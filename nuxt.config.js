@@ -27,5 +27,9 @@ export default {
       default: '~/apollo-config.js',
     },
   },
-  build: {},
+  build: {
+    babel: {
+      plugins: ['@babel/plugin-proposal-optional-chaining'],
+    },
+  },
 }

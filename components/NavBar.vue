@@ -35,28 +35,59 @@ export default {
 
 <style lang="scss" scoped>
 #navbar {
-  display: grid;
-  align-items: center;
-  height: 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 2px;
 
-  &__list {
-    max-width: 48rem;
-    list-style-type: none;
-    margin: 0 auto;
-    padding: 0;
+  * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.35s ease;
+    transition: all 0.35s ease;
   }
 
-  &__list-item {
-    display: inline;
+  li {
+    display: inline-block;
+    list-style: outside none none;
+    margin: 0.7em 1.5em;
+    padding: 0;
 
     a {
-      color: inherit;
+      padding: 0.3em 0;
+      color: rgba(255, 255, 255, 0.5);
+      position: relative;
       text-decoration: none;
-      margin: 0 0.75rem;
 
-      &:hover {
-        color: #2889fc;
-        text-decoration: underline;
+      &:before,
+      &:after {
+        height: 3px;
+        position: absolute;
+        content: '';
+        -webkit-transition: all 0.35s ease;
+        transition: all 0.35s ease;
+        background-color: #2980b9;
+        width: 0;
+      }
+
+      &:before {
+        top: 0;
+        right: 0;
+      }
+
+      &:after {
+        bottom: 0;
+        left: 0;
+      }
+
+      &:hover,
+      &.nuxt-link-exact-active {
+        color: #ffffff;
+
+        &:before,
+        &:after {
+          width: 100%;
+        }
       }
     }
   }
