@@ -1,6 +1,6 @@
 <template>
   <nav id="navbar">
-    <ul id="navbar__list">
+    <ul id="navbar__list nb_list">
       <li
         id="navbar__list-item"
         v-for="link in links"
