@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import getData from '~/data/utils/contentful-request'
 import experienceItemCollection from '~/data/queries/experienceItemCollection.graphql'
 
 const ExperienceItem = () => import('~/components/ExperienceItem')
@@ -17,11 +18,13 @@ export default {
   transition: 'page',
   components: { ExperienceItem },
   async asyncData(context) {
-    const { data } = await context.app.apolloProvider.defaultClient.query({
-      query: experienceItemCollection,
-    })
-
-    return { experienceItems: data?.experienceItemCollection?.items || [] }
+    return {
+      experienceItems: await getData(
+        context,
+        experienceItemCollection,
+        'experienceItemCollection'
+      ),
+    }
   },
 }
 </script>

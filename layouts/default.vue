@@ -29,10 +29,5 @@ export default {
     display: grid;
     place-items: center;
   }
-
-  &.dark {
-    background-color: #2c2d30;
-    color: #f7feff;
-  }
 }
 </style>

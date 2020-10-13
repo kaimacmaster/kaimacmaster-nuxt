@@ -1,6 +1,6 @@
 <template>
   <nav id="navbar">
-    <ul id="navbar__list nb_list">
+    <ul id="navbar__list">
       <li
         id="navbar__list-item"
         v-for="link in links"
@@ -34,11 +34,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~/assets/scss/variables.scss';
+
 #navbar {
   text-align: center;
   text-transform: uppercase;
   font-weight: 500;
   letter-spacing: 2px;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+  }
 
   * {
     -webkit-box-sizing: border-box;
@@ -49,13 +56,13 @@ export default {
 
   li {
     display: inline-block;
-    list-style: outside none none;
-    margin: 0.7em 1.5em;
-    padding: 0;
+    list-style: none;
+    margin: 0.7rem 0;
+    padding: 0.7rem 1rem;
 
     a {
       padding: 0.3em 0;
-      color: rgba(255, 255, 255, 0.5);
+      color: $color-fade;
       position: relative;
       text-decoration: none;
 
@@ -66,7 +73,7 @@ export default {
         content: '';
         -webkit-transition: all 0.35s ease;
         transition: all 0.35s ease;
-        background-color: #2980b9;
+        background-color: $color-main;
         width: 0;
       }
 
@@ -82,7 +89,7 @@ export default {
 
       &:hover,
       &.nuxt-link-exact-active {
-        color: #ffffff;
+        color: $color-white;
 
         &:before,
         &:after {

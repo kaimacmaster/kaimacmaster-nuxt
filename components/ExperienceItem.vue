@@ -79,6 +79,11 @@ article {
   max-width: 36rem;
   padding: 1rem 0.5rem;
   text-align: left;
+  font-size: 0.9rem;
+
+  @media only screen and (min-width: 32.5rem) {
+    font-size: 1rem;
+  }
 
   .article-header {
     display: flex;
@@ -87,8 +92,25 @@ article {
     padding-bottom: 0.25rem;
     line-height: 1.33;
 
+    .title {
+      font-size: 1.4rem;
+
+      @media only screen and (min-width: 32.5rem) {
+        font-size: 1.6rem;
+      }
+    }
+
+    .subtitle {
+      font-size: 1rem;
+    }
+
     .dates {
       text-align: right;
+      font-size: 0.85rem;
+
+      @media only screen and (min-width: 32.5rem) {
+        font-size: 0.935rem;
+      }
     }
   }
 }
