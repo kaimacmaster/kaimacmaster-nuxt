@@ -123,14 +123,16 @@ article {
       display: inline-block;
       text-align: right;
       font-size: 0.85rem;
-      cursor: pointer;
+      cursor: help;
 
       @media only screen and (min-width: 32.5rem) {
         font-size: 0.935rem;
       }
 
       & .datesText {
+        transition: all 100ms ease-out;
         visibility: hidden;
+        opacity: 0;
         white-space: nowrap;
         width: fit-content;
         bottom: 100%;
@@ -144,6 +146,7 @@ article {
 
       &:hover .datesText {
         visibility: visible;
+        opacity: 1;
       }
     }
   }
