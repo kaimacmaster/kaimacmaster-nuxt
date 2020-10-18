@@ -1,5 +1,5 @@
 <template>
-  <div id="layout" :class="{ dark }">
+  <div id="layout">
     <header id="header">
       <NavBar />
     </header>
@@ -15,7 +15,6 @@ import NavBar from '~/components/NavBar'
 
 export default {
   components: { NavBar },
-  data: () => ({ dark: true }),
 }
 </script>
 
