@@ -8,8 +8,7 @@
 </template>
 
 <script>
-import getData from '~/data/utils/contentful-request'
-import experienceItemCollection from '~/data/queries/experienceItemCollection.graphql'
+import { getExperienceItems } from '~/data/utils/contentful-request'
 
 const ExperienceItem = () => import('~/components/ExperienceItem')
 
@@ -19,11 +18,7 @@ export default {
   components: { ExperienceItem },
   async asyncData(context) {
     return {
-      experienceItems: await getData(
-        context,
-        experienceItemCollection,
-        'experienceItemCollection'
-      ),
+      experienceItems: await getExperienceItems(context),
     }
   },
 }

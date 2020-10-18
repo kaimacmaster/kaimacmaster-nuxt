@@ -6,7 +6,8 @@
         <h3 class="subtitle" v-text="jobTitle" />
       </div>
       <div class="dates">
-        <p v-text="dates" />
+        <time v-text="duration" />
+        <span class="datesText" v-text="dates" />
       </div>
     </div>
     <p v-text="description" />
@@ -30,21 +31,21 @@ export default {
   },
   computed: {
     companyName() {
-      return this.experienceItem && this.experienceItem.companyName
+      return this.experienceItem?.companyName
     },
     jobTitle() {
-      return this.experienceItem && this.experienceItem.jobTitle
+      return this.experienceItem?.jobTitle
     },
     description() {
-      return this.experienceItem && this.experienceItem.description
+      return this.experienceItem?.description
     },
     startDate() {
-      const startDate = this.experienceItem && this.experienceItem.startDate
-      return startDate && startDate.length ? new Date(startDate) : null
+      const startDate = this.experienceItem?.startDate
+      return startDate && new Date(startDate)
     },
     leaveDate() {
-      const leaveDate = this.experienceItem && this.experienceItem.leaveDate
-      return leaveDate && leaveDate.length ? new Date(leaveDate) : null
+      const leaveDate = this.experienceItem?.leaveDate
+      return leaveDate && new Date(leaveDate)
     },
     dates() {
       if (!this.startDate) {
@@ -68,13 +69,26 @@ export default {
       return `${startDateString} - ${leaveDateString}`
     },
     duration() {
-      return null
+      const startDate = this.startDate
+      const endDate = this.leaveDate || new Date()
+
+      let diff = (endDate.getTime() - startDate.getTime()) / 1000
+      diff /= 60 * 60 * 24 * 7 * 4
+      const totalMonths = Math.abs(Math.round(diff))
+
+      if (totalMonths < 12) {
+        return `${totalMonths} months`
+      }
+
+      return `${Math.floor(totalMonths / 12)} yrs, ${totalMonths % 12} mths`
     },
   },
 }
 </script>
 
 <style lang="scss" scoped>
+@import '~/assets/scss/variables.scss';
+
 article {
   max-width: 36rem;
   padding: 1rem 0.5rem;
@@ -105,11 +119,31 @@ article {
     }
 
     .dates {
+      position: relative;
+      display: inline-block;
       text-align: right;
       font-size: 0.85rem;
+      cursor: pointer;
 
       @media only screen and (min-width: 32.5rem) {
         font-size: 0.935rem;
+      }
+
+      & .datesText {
+        visibility: hidden;
+        white-space: nowrap;
+        width: fit-content;
+        bottom: 100%;
+        right: 0;
+        color: $color-main;
+        text-align: center;
+        padding: 0.2rem 0;
+        border-radius: 6px;
+        position: absolute;
+      }
+
+      &:hover .datesText {
+        visibility: visible;
       }
     }
   }
