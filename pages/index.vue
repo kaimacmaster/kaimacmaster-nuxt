@@ -7,7 +7,7 @@
     <section class="bio">
       <p>
         I'm a full-stack web developer specialising in front-end development
-        with over nine years working in industry.
+        with over eleven years working in industry.
       </p>
       <p>
         Proficient in all stages of development including dev-ops, front-end,
