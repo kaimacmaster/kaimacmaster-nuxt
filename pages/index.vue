@@ -7,7 +7,7 @@
     <section class="bio">
       <p>
         I'm a full-stack web developer specialising in front-end development
-        with over eleven years working in industry.
+        with over {{ yearsWorked }} working in industry.
       </p>
       <p>
         Proficient in all stages of development including dev-ops, front-end,
@@ -25,7 +25,71 @@ export default {
   data: () => ({
     name: 'Kai Macmaster',
   }),
+  computed: {
+    // get years since november 2011
+    years() {
+      const start = new Date(2011, 11, 1);
+      const now = new Date();
+      const years = now.getFullYear() - start.getFullYear();
+      const months = now.getMonth() - start.getMonth();
+      return years + (months < 0 ? 0 : 1);
+    },
+    // convert number to word (e.g. 1 -> one, 56 -> fifty)
+    numberToWord() {
+      const ones = [
+        'zero',
+        'one',
+        'two',
+        'three',
+        'four',
+        'five',
+        'six',
+        'seven',
+        'eight',
+        'nine',
+      ];
+      const teens = [
+        'ten',
+        'eleven',
+        'twelve',
+        'thirteen',
+        'fourteen',
+        'fifteen',
+        'sixteen',
+        'seventeen',
+        'eighteen',
+        'nineteen',
+      ];
+      const tens = [
+        'twenty',
+        'thirty',
+        'forty',
+        'fifty',
+        'sixty',
+        'seventy',
+        'eighty',
+        'ninety',
+      ];
+      return (number) => {
+        if (number < 10) {
+          return ones[number];
+        }
+        if (number < 20) {
+          return teens[number - 10];
+        }
+        if (number % 10 === 0) {
+          return tens[Math.floor(number / 10) - 2];
+        }
+        return `${tens[Math.floor(number / 10) - 2]}-${ones[number % 10]}`;
+      };
+    },
+
+    yearsWorked() {
+      return `${this.numberToWord(this.years)} years`;
+    },
+  },
 }
+
 </script>
 
 <style lang="scss">
