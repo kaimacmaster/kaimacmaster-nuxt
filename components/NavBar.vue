@@ -12,25 +12,16 @@
   </nav>
 </template>
 
-<script>
-export default {
-  name: 'NavBar',
-  props: {
-    links: {
-      type: Array,
-      default: () => [
-        {
-          name: 'Home',
-          to: '/',
-        },
-        {
-          name: 'Experience',
-          to: '/experience',
-        },
-      ],
-    },
+<script setup>
+defineProps({
+  links: {
+    type: Array,
+    default: () => [
+      { name: 'Home', to: '/' },
+      { name: 'Experience', to: '/experience' },
+    ],
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

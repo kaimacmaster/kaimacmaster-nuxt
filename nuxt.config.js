@@ -1,35 +1,18 @@
-export default {
-  target: 'server',
-  head: {
-    title: 'Kai Macmaster',
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          "Hello, I'm Kai. I'm a full stack web developer specialising in front-end.",
-      },
-    ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-  },
+export default defineNuxtConfig({
   css: ['~/assets/scss/global.scss'],
   plugins: [],
   components: true,
   buildModules: [],
-  modules: [
-    '@nuxtjs/apollo',
-    ['nuxt-canonical', { baseUrl: 'https://kaimacmaster.co.uk' }],
-  ],
+  modules: ['@nuxtjs/apollo'],
   apollo: {
-    clientConfigs: {
-      default: '~/apollo-config.js',
+    clients: {
+      default: {
+        httpEndpoint: `https://graphql.contentful.com/content/v1/spaces/${process.env.NUXT_ENV_SPACE_ID}`,
+        httpLinkOptions: {
+          credentials: 'same-origin',
+        },
+        getAuth: () => `Bearer ${process.env.NUXT_ENV_CDA_TOKEN}`,
+      },
     },
   },
-  build: {
-    babel: {
-      plugins: ['@babel/plugin-proposal-optional-chaining'],
-    },
-  },
-}
+})
