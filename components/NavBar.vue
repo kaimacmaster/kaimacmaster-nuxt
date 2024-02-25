@@ -6,7 +6,7 @@
         v-for="link in links"
         :key="link.name.toLowerCase()"
       >
-        <NuxtLink :to="link.to" v-text="link.name" />
+        <NuxtLink :to="link.to">{{ link.name }}</NuxtLink>
       </li>
     </ul>
   </nav>
@@ -79,7 +79,7 @@ defineProps({
       }
 
       &:hover,
-      &.nuxt-link-exact-active {
+      &.router-link-exact-active {
         color: $color-white;
 
         &:before,

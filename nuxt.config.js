@@ -10,8 +10,8 @@ export default defineNuxtConfig({
         httpEndpoint: `https://graphql.contentful.com/content/v1/spaces/${process.env.NUXT_ENV_SPACE_ID}`,
         httpLinkOptions: {
           credentials: 'same-origin',
+          authorization: `Bearer 6-312laSzROBvcK8hdZgov2bNkqk75zBxGyoExwvZJA`,
         },
-        getAuth: () => `Bearer ${process.env.NUXT_ENV_CDA_TOKEN}`,
       },
     },
   },

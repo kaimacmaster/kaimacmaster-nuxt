@@ -3,7 +3,7 @@
     <figure class="profile">
       <img src="/images/profile.png" class="profile-image" :alt="name" />
     </figure>
-    <h1 v-text="name" />
+    <h1>{{ name }}</h1>
     <section class="bio">
       <p>
         I'm a full-stack web developer specialising in front-end development
@@ -29,7 +29,7 @@ const years = computed(() => {
   return yearsDiff + (monthsDiff < 0 ? 0 : 1)
 })
 
-const numberToWord = () => {
+const numberToWord = (number) => {
   const ones = [
     'zero',
     'one',
@@ -64,21 +64,19 @@ const numberToWord = () => {
     'eighty',
     'ninety',
   ]
-  return (number) => {
-    if (number < 10) {
-      return ones[number]
-    }
-    if (number < 20) {
-      return teens[number - 10]
-    }
-    if (number % 10 === 0) {
-      return tens[Math.floor(number / 10) - 2]
-    }
-    return `${tens[Math.floor(number / 10) - 2]}-${ones[number % 10]}`
+  if (number < 10) {
+    return ones[number]
   }
+  if (number < 20) {
+    return teens[number - 10]
+  }
+  if (number % 10 === 0) {
+    return tens[Math.floor(number / 10) - 2]
+  }
+  return `${tens[Math.floor(number / 10) - 2]}-${ones[number % 10]}`
 }
 
-const yearsWorked = computed(() => `${numberToWord(years)} years`)
+const yearsWorked = `${numberToWord(years.value)} years`
 </script>
 
 <style lang="scss">
