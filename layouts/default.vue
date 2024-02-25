@@ -4,19 +4,11 @@
       <NavBar />
     </header>
     <main id="main">
-      <Nuxt />
+      <NuxtPage />
     </main>
     <footer id="footer"></footer>
   </div>
 </template>
-
-<script>
-import NavBar from '~/components/NavBar'
-
-export default {
-  components: { NavBar },
-}
-</script>
 
 <style lang="scss">
 #layout {

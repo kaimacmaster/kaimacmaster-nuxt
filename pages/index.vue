@@ -3,7 +3,7 @@
     <figure class="profile">
       <img src="/images/profile.png" class="profile-image" :alt="name" />
     </figure>
-    <h1 v-text="name" />
+    <h1>{{ name }}</h1>
     <section class="bio">
       <p>
         I'm a full-stack web developer specialising in front-end development
@@ -18,78 +18,65 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'homepage',
-  transition: 'page',
-  data: () => ({
-    name: 'Kai Macmaster',
-  }),
-  computed: {
-    // get years since november 2011
-    years() {
-      const start = new Date(2011, 11, 1);
-      const now = new Date();
-      const years = now.getFullYear() - start.getFullYear();
-      const months = now.getMonth() - start.getMonth();
-      return years + (months < 0 ? 0 : 1);
-    },
-    // convert number to word (e.g. 1 -> one, 56 -> fifty)
-    numberToWord() {
-      const ones = [
-        'zero',
-        'one',
-        'two',
-        'three',
-        'four',
-        'five',
-        'six',
-        'seven',
-        'eight',
-        'nine',
-      ];
-      const teens = [
-        'ten',
-        'eleven',
-        'twelve',
-        'thirteen',
-        'fourteen',
-        'fifteen',
-        'sixteen',
-        'seventeen',
-        'eighteen',
-        'nineteen',
-      ];
-      const tens = [
-        'twenty',
-        'thirty',
-        'forty',
-        'fifty',
-        'sixty',
-        'seventy',
-        'eighty',
-        'ninety',
-      ];
-      return (number) => {
-        if (number < 10) {
-          return ones[number];
-        }
-        if (number < 20) {
-          return teens[number - 10];
-        }
-        if (number % 10 === 0) {
-          return tens[Math.floor(number / 10) - 2];
-        }
-        return `${tens[Math.floor(number / 10) - 2]}-${ones[number % 10]}`;
-      };
-    },
+<script setup>
+const name = 'Kai Macmaster'
 
-    yearsWorked() {
-      return `${this.numberToWord(this.years)} years`;
-    },
-  },
+const years = computed(() => {
+  const start = new Date(2011, 11, 1)
+  const now = new Date()
+  const yearsDiff = now.getFullYear() - start.getFullYear()
+  const monthsDiff = now.getMonth() - start.getMonth()
+  return yearsDiff + (monthsDiff < 0 ? 0 : 1)
+})
+
+const numberToWord = (number) => {
+  const ones = [
+    'zero',
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
+  ]
+  const teens = [
+    'ten',
+    'eleven',
+    'twelve',
+    'thirteen',
+    'fourteen',
+    'fifteen',
+    'sixteen',
+    'seventeen',
+    'eighteen',
+    'nineteen',
+  ]
+  const tens = [
+    'twenty',
+    'thirty',
+    'forty',
+    'fifty',
+    'sixty',
+    'seventy',
+    'eighty',
+    'ninety',
+  ]
+  if (number < 10) {
+    return ones[number]
+  }
+  if (number < 20) {
+    return teens[number - 10]
+  }
+  if (number % 10 === 0) {
+    return tens[Math.floor(number / 10) - 2]
+  }
+  return `${tens[Math.floor(number / 10) - 2]}-${ones[number % 10]}`
 }
 
+const yearsWorked = `${numberToWord(years.value)} years`
 </script>
 
 <style lang="scss">
@@ -100,9 +87,12 @@ export default {
   background-color: $color-fade;
   border-radius: 50%;
   z-index: 3;
-  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
-    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+  box-shadow:
+    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+    0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
     0 100px 80px rgba(0, 0, 0, 0.12);
   margin-bottom: 2rem;
 

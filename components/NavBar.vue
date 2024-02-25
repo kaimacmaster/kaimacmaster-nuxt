@@ -6,31 +6,22 @@
         v-for="link in links"
         :key="link.name.toLowerCase()"
       >
-        <NuxtLink :to="link.to" v-text="link.name" />
+        <NuxtLink :to="link.to">{{ link.name }}</NuxtLink>
       </li>
     </ul>
   </nav>
 </template>
 
-<script>
-export default {
-  name: 'NavBar',
-  props: {
-    links: {
-      type: Array,
-      default: () => [
-        {
-          name: 'Home',
-          to: '/',
-        },
-        {
-          name: 'Experience',
-          to: '/experience',
-        },
-      ],
-    },
+<script setup>
+defineProps({
+  links: {
+    type: Array,
+    default: () => [
+      { name: 'Home', to: '/' },
+      { name: 'Experience', to: '/experience' },
+    ],
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -88,7 +79,7 @@ export default {
       }
 
       &:hover,
-      &.nuxt-link-exact-active {
+      &.router-link-exact-active {
         color: $color-white;
 
         &:before,

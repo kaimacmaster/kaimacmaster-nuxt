@@ -2,88 +2,54 @@
   <article>
     <div class="article-header">
       <div>
-        <h2 class="title" v-text="companyName" />
-        <h3 class="subtitle" v-text="jobTitle" />
+        <h2 class="title" v-text="experienceItem.companyName" />
+        <h3 class="subtitle" v-text="experienceItem.jobTitle" />
       </div>
       <div class="dates">
         <time v-text="duration" />
         <span class="datesText" v-text="dates" />
       </div>
     </div>
-    <p v-text="description" />
+    <p class="description" v-text="experienceItem.description" />
   </article>
 </template>
 
-<script>
-export default {
-  name: 'ExperienceItem',
-  props: {
-    experienceItem: {
-      type: Object,
-      default: () => ({
-        companyName: '',
-        jobTitle: '',
-        startDate: null,
-        leaveDate: null,
-        description: '',
-      }),
-    },
+<script setup>
+const { experienceItem } = defineProps({
+  experienceItem: {
+    type: Object,
+    required: true,
   },
-  computed: {
-    companyName() {
-      return this.experienceItem?.companyName
-    },
-    jobTitle() {
-      return this.experienceItem?.jobTitle
-    },
-    description() {
-      return this.experienceItem?.description
-    },
-    startDate() {
-      const startDate = this.experienceItem?.startDate
-      return startDate && new Date(startDate)
-    },
-    leaveDate() {
-      const leaveDate = this.experienceItem?.leaveDate
-      return leaveDate && new Date(leaveDate)
-    },
-    dates() {
-      if (!this.startDate) {
-        return 'Present'
-      }
+})
 
-      const options = {
-        year: 'numeric',
-        month: 'short',
-      }
+const formatDate = (date) =>
+  date
+    ? date.toLocaleDateString('en-GB', { year: 'numeric', month: 'short' })
+    : 'Present'
 
-      const startDateString = this.startDate.toLocaleDateString(
-        'en-GB',
-        options
-      )
+const calculateDuration = (startDate, endDate) => {
+  endDate = endDate || new Date()
+  const diff = (endDate.getTime() - startDate.getTime()) / 1000
+  const totalMonths = Math.abs(Math.round(diff / (60 * 60 * 24 * 7 * 4)))
 
-      const leaveDateString = this.leaveDate
-        ? this.leaveDate.toLocaleDateString('en-GB', options)
-        : 'Present'
-
-      return `${startDateString} - ${leaveDateString}`
-    },
-    duration() {
-      const startDate = this.startDate
-      const endDate = this.leaveDate || new Date()
-
-      let diff = (endDate.getTime() - startDate.getTime()) / 1000
-      diff /= 60 * 60 * 24 * 7 * 4
-      const totalMonths = Math.abs(Math.round(diff))
-
-      if (totalMonths < 12) {
-        return `${totalMonths} months`
-      }
-
-      return `${Math.floor(totalMonths / 12)} yrs, ${totalMonths % 12} mths`
-    },
-  },
+  if (totalMonths < 12) {
+    return `${totalMonths} months`
+  }
+  return `${Math.floor(totalMonths / 12)} yrs, ${totalMonths % 12} mths`
 }
+
+const startDate = computed(() =>
+  experienceItem.startDate ? new Date(experienceItem.startDate) : null,
+)
+const leaveDate = computed(() =>
+  experienceItem.leaveDate ? new Date(experienceItem.leaveDate) : null,
+)
+const dates = computed(
+  () => `${formatDate(startDate.value)} - ${formatDate(leaveDate.value)}`,
+)
+const duration = computed(() =>
+  calculateDuration(startDate.value, leaveDate.value),
+)
 </script>
 
 <style lang="scss" scoped>
@@ -97,6 +63,12 @@ article {
 
   @media only screen and (min-width: 32.5rem) {
     font-size: 1rem;
+  }
+
+  .description {
+    padding-top: 0.5rem;
+    white-space: pre-wrap;
+    font-size: 0.9rem;
   }
 
   .article-header {
