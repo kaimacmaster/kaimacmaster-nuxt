@@ -18,8 +18,8 @@
   </div>
 </template>
 
-<script setup>
-const name = 'Kai Macmaster'
+<script lang="ts" setup>
+const name: string = 'Kai Macmaster'
 
 const years = computed(() => {
   const start = new Date(2011, 11, 1)
@@ -29,7 +29,7 @@ const years = computed(() => {
   return yearsDiff + (monthsDiff < 0 ? 0 : 1)
 })
 
-const numberToWord = (number) => {
+const numberToWord = (number: number) => {
   const ones = [
     'zero',
     'one',
@@ -76,7 +76,7 @@ const numberToWord = (number) => {
   return `${tens[Math.floor(number / 10) - 2]}-${ones[number % 10]}`
 }
 
-const yearsWorked = `${numberToWord(years.value)} years`
+const yearsWorked: string = numberToWord(years.value) + ' years'
 </script>
 
 <style lang="scss">
