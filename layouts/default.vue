@@ -1,19 +1,16 @@
 <template>
-  <div id="layout">
+  <div id="layout" class="min-h-dvh grid">
     <header id="header">
       <NavBar />
     </header>
-    <main id="main">
+    <main id="main" class="grid place-items-center">
       <NuxtPage />
     </main>
-    <footer id="footer"></footer>
   </div>
 </template>
 
 <style lang="scss">
 #layout {
-  min-height: 100vh;
-  display: grid;
   grid-template-rows: auto 1fr auto;
 
   #main {

@@ -1,6 +1,5 @@
-@import 'variables.scss';
-
 html {
+  @apply antialiased bg-zinc-900 text-white leading-4;
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -13,46 +12,6 @@ html {
     Droid Sans,
     Helvetica Neue,
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
-  background-color: $color-background;
-  color: $color-white;
-}
-
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-}
-
-a {
-  color: $color-main;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-.page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 0.5rem;
 }
 
 .page-enter-active,
