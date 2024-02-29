@@ -1,19 +1,20 @@
 <template>
-  <div class="max-w-2xl">
+  <div class="max-w-xl px-4 text-center md:px-0">
     <img
       src="/images/profile.png"
-      class="rounded-full object-cover bg-zinc-800 h-16 w-16 mb-6"
+      alt="Kai Macmaster"
+      class="rounded-full object-cover shadow shadow-zinc-600 border-4 border-amber-50 bg-zinc-800 h-16 w-16 mb-6 mx-auto lg:h-48 lg:w-48 md:h-32 md:w-32"
     />
-    <h1 class="text-3xl font-bold sm:text-4xl md:text-6xl text-zinc-100 line">
-      Developer, husband and father.
+    <h1 class="text-3xl font-bold sm:text-4xl md:text-5xl text-zinc-100 line">
+      Lead Frontend Developer, Entrepreneur, Husband and Dad.
     </h1>
     <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
       I’m <span class="text-amber-500 font-medium">Kai</span>, a software
-      developer and entrepreneur based in Hull City. I’m the founder and CTO of
-      Your Ikigai Ltd, where we develop technologies that empower people to do
-      what they love.
+      developer and entrepreneur based in the city of Hull. I’m the founder and
+      CTO of Your Ikigai Ltd, where we develop technologies that empower people
+      to do what they love.
     </p>
-    <ul role="list" class="mt-6 flex gap-x-6">
+    <ul role="list" class="mt-6 flex gap-x-6 justify-center">
       <li>
         <a
           href="https://uk.linkedin.com/in/kaimacmaster"

@@ -17,7 +17,8 @@
       </div>
 
       <div class="mt-10 space-y-16 pt-10 sm:mt-16 sm:pt-16">
-        <article
+        Migration of posts are in progress, check back in the next few days...
+        <!--        <article
           v-for="post in posts"
           :key="post.id"
           class="flex max-w-xl flex-col items-start justify-between"
@@ -45,15 +46,13 @@
               {{ post.description }}
             </p>
           </div>
-        </article>
+        </article>-->
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import ExperienceItem from '~/components/ExperienceItem.vue'
-
 const posts = [
   {
     id: 1,

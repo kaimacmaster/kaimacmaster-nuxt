@@ -19,6 +19,7 @@ defineProps({
     default: () => [
       { name: 'Home', to: '/' },
       { name: 'Experience', to: '/experience' },
+      { name: 'Blog', to: '/blog' },
     ],
   },
 })
@@ -37,7 +38,6 @@ defineProps({
   }
 
   * {
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     -webkit-transition: all 0.35s ease;
     transition: all 0.35s ease;
