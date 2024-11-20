@@ -19,7 +19,6 @@ defineProps({
     default: () => [
       { name: 'Home', to: '/' },
       { name: 'Experience', to: '/experience' },
-      { name: 'Blog', to: '/blog' },
     ],
   },
 })
